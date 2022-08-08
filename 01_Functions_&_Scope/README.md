@@ -1,4 +1,4 @@
-# Functions
+# Functionss
 ## SWBAT
 - [ ] Describe what functions are and their central importance in JS
 - [ ] Review syntax differences between regular functions and arrow functions
