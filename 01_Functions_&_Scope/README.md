@@ -36,7 +36,7 @@ The variable inventory is an array of book objects in index.js. Inventory[0] is 
         }
 ```
 
-- Demo Function Decoration: 
+- Demo Function Declaration: 
     - Declare a function that takes a book as a parameter and returns the book's price formatted to look like currency. Given inventory[0] the return should be '$10.00"
     
 - Demo Function Expressions: 
