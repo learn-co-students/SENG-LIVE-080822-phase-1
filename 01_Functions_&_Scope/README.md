@@ -6,9 +6,8 @@
     - [ ] Block scope
     - [ ] Function scope
     - [ ] Global scope
-- [ ] Understand what it means that a function are first- class -objects
-- [ ] Explain what a higher-order function is
-- [ ] Grasp the relationship betweenDescribe what a callback and higher-order functions is
+- [ ] Understand what it means for functions to be first-class-objects
+- [ ] Describe the differences between callback and higher-order functions
 
 <p align="center">
     <img src="../assets/functions.jpeg" width="250" height="250">
