@@ -11,6 +11,7 @@
 ## Deliverables 
 
 <details>
+    <br>
     <summary>Add an eventListener to any element and log the event object.</summary>
 
     const bodyElement = document.querySelector('body');
