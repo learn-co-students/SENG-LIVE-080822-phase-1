@@ -1,3 +1,5 @@
+// Separation of Concerns
+// Single Source of Truth
 const bookStore = {
     location: "Seattle",
     address:'333 st ne Seattle wa 99999',
@@ -73,4 +75,41 @@ const bookStore = {
 
         }
     ]
-  }
+}
+
+const secondBookStore = {
+    location: "New York",
+    address:'999 st ne NYC ny 11111',
+    number: 1111111111,
+    name: 'Easley\'s Technical Books II',
+    hours: 'Monday - Friday 6am - 9pm',
+    inventory: [
+        {
+            id:1,
+            title: 'The Road to React',
+            author: 'Robin Wieruch',
+            price: 29.99,
+            reviews: [{userID: 1, content:'Fantastic read!'}],
+            inventory: 15,
+            imageUrl: 'https://m.media-amazon.com/images/I/41m+5+-JRNL.jpg',
+        },
+        {
+            id:2,
+            title: 'Node.js Design Patterns',
+            author: 'Mario Casciaro, Luciano Mammino',
+            price: 46.74,
+            reviews: [{userID: 2, content:'Excellent!'}],
+            inventory: 25,
+            imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/515wgVc7S9L._SX404_BO1,204,203,200_.jpg',
+        },
+        {
+            id:3,
+            title: 'React and React Native: 4th Edition',
+            author: 'by Adam Boduch, Roy Derks, Mikhail Sakhniuk',
+            price: 39.99,
+            reviews: [{userID: 3, content:'Groundbreaking!'}],
+            inventory: 5,
+            imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/41CTvA7Ls7L._SX404_BO1,204,203,200_.jpg',
+        }
+    ]
+}
