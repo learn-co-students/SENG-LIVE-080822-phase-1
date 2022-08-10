@@ -1,18 +1,18 @@
-# Events
+# DOM Events
 
-## SWBAT
-- [ ] Explain the importance of event handling in modern web applications
-- [ ] Explain how callback functions are used with event listeners
-- [ ] Observe how to add a form to a webpage using HTML and JavaScript
-- [ ] Observe how onSubmit events are used to receive information from Users via forms
-- [ ] Explain the purpose of `.preventDefault()` method
-- [ ] Use MDN to discover and implement JavaScript events
+### Learning Objectives
+- [x] Understand the importance of event handling in modern web applications
+- [x] Understand how callback functions are used with event listeners
+- [x] Observe how to add a form to a webpage using HTML and JavaScript
+- [x] Observe how onSubmit events are used to receive information from Users via forms
+- [x] Explain the purpose of `.preventDefault()` method
+- [x] Use MDN to discover and handle multiple JavaScript events
 
 ## Deliverables 
 
 <details>
     <br>
-    <summary>Add an event listener to any element and log the event object.</summary>
+    <summary>Add a <code>click</code> event listener to any DOM element and log the event object.</summary>
 
     const bodyElement = document.querySelector('body');
 
@@ -22,8 +22,8 @@
 <br>
 <details>
     <br>
-    <summary>In <code>renderBookCard</code>, add an event listener to the Delete button.
-    Add a callback that removes the appropriate bookCard. You can do this through the <code>li</code> itself or the <code>click</code> event.</summary>
+    <summary>In <code>renderBookCard</code>, add a <code>click</code> event listener to each new <button>Delete</button> button.
+    Pass a callback that removes the <code>parentElement</code> book card. You can do this through the <code>li</code> itself or the <code>click</code> event.</summary>
     
     // through 'click' event
     btn.addEventListener('click', e => e.target.parentElement.remove());
@@ -34,7 +34,7 @@
 <br>
 <details>
     <br>
-    <summary>Build a callback function, <code>handleForm</code>, that uses the form's <code>submit</code> event to build a newCard object using <code>renderBookCard</code>. </summary>
+    <summary>Build a callback function, <code>handleForm</code>, that uses the form's <code>submit</code> event to build a new card object through <code>renderBookCard</code>. </summary>
     
     function handleForm(e){
         
@@ -61,7 +61,7 @@
 <br>
 <details>
     <br>
-    <summary>Add a <code>DOMContentLoaded</code> event listener to the document and move all of our UI logic to within the callback function. Why might we want to do this?</summary>
+    <summary>Add a <code>DOMContentLoaded</code> event listener to the document and move all of our DOM dependent logic within the callback function. Why might we want to do this?</summary>
 
     document.addEventListener('DOMContentLoaded', () => {
         // ...all DOM dependent rendering / event handling logic here
@@ -70,7 +70,7 @@
 <br>
 <details>
     <br>
-    <summary>In <code>data.js</code>, create a <code>newBookStore</code> object with the same properties as <code>bookStore</code>. Add a button that toggles the store information to use for the <code>header</code>, <code>footer</code>, and appropriate <code>li</code> elements.</summary>
+    <summary>In <code>data.js</code>, create a <code>newBookStore</code> object with the same properties as <code>bookStore</code>. Add a button that toggles between stores and renders content accordingly within the <code>header</code>, <code>footer</code>, and appropriate <code>li</code> elements.</summary>
 
     // data.js
         
@@ -87,6 +87,23 @@
                 <button id="switch-btn">Switch Stores</button>
             </div>
         </div>
+
+    // style.css
+
+        .container {
+            text-align: center;    
+        }
+
+        .container button {
+            width:190px;
+            margin: 15px 5px 15px 5px;
+            border: none;
+            background-color: #2e824d;
+            color: rgb(255, 255, 255);
+            padding:3px;
+            font-size: large;
+            font-weight: bold;
+        }
 
     // index.js
 
@@ -137,26 +154,25 @@
 <br>
 
 ## Events
-When the user interacts with the dom, it fires events that trigger an effect in our JavaScript code that can do something. Such as updating the dom or adding content to the database. 
+As users interact with the DOM, they trigger events that can fire off our JavaScript code to update the DOM or make database changes. 
 
-To pick up events, our code must 'listen' for the event. addEventListener will do just that. It takes 2 arguments, the first is the event it's listening for, and the second is the code that will run once the event is triggered.
-
-```
-div.addEventListener('click', () => console.log('hi'))
-
-//When events are triggered, the event object is passed to the second argument as an argument to the callback.
-div.addEventListener('click', (e) => console.log(e))
+To pick up events, our code must 'listen' for the event. `addEventListener` will do just that. It takes 2 arguments, the first (1) being the event it's listening for and second (2), the callback function that will run once the event is triggered.
 
 ```
+div.addEventListener('click', () => console.log('hi'));
 
-There are many event types: [Events](https://developer.mozilla.org/en-US/docs/Web/Events)
+// as events are triggered, event objects are passed as an argument to callbacks
+div.addEventListener('click', (e) => console.log(e));
+
+```
+
+There are many DOM [event types](https://developer.mozilla.org/en-US/docs/Web/Events).
 
 
 ## Forms
-Forms can have a variety of user inputs users can interact with.
-The submit event can be used to retrieve the value of those inputs. 
+Forms have a variety of inputs that users can interact with. The <code>submit</code> event can be used to retrieve the values of those inputs. 
 
-When a form submits, it will, by default, try to send a request and refresh the page. To prevent that, we need to call e.preventDefault(). Afterward, the event can be used to grab the form values through the target attribute.
+When a form submits, it will, by default, try to send a request and refresh the page. To prevent that, we need to call <code>e.preventDefault()</code>. Afterward, the <code>event</code> object can be used to pull the form values through the target attribute.
 
 ```
 <form>
@@ -165,9 +181,10 @@ When a form submits, it will, by default, try to send a request and refresh the 
 </form>
 
 form.addEventListener('submit',(e)=> {
-    e.preventDefault
-    //Here we are using the name property from the form to target the specific input.
-    console.log(e.target.faveColor.value)
+    e.preventDefault;
+    
+    // here we are using the 'name' property from the form input to target the corresponding value
+    console.log(e.target.faveColor.value);
 })
 
 ```

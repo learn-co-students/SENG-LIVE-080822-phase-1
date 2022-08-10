@@ -1,13 +1,14 @@
-
-renderHeader()
-renderFooter()
-bookStore.inventory.forEach(renderBookCard)
+// Function Invocations
+renderHeader();
+renderFooter();
+bookStore.inventory.forEach(renderBookCard);
 
 
 // Renders Header
 function renderHeader(){
     document.querySelector('h1').textContent = bookStore.name
 }
+
 // Renders Footer
 function renderFooter(){
     const footerDivs = document.querySelectorAll('footer div')
@@ -16,6 +17,7 @@ function renderFooter(){
     footerDivs[2].textContent = bookStore.hours
 }
 
+// Renders Each New Book Card
 function renderBookCard(cardData) {
     const li = document.createElement('li')
     const h3 = document.createElement('h3')
