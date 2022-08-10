@@ -161,7 +161,7 @@ To pick up events, our code must 'listen' for the event. `addEventListener` will
 ```
 div.addEventListener('click', () => console.log('hi'));
 
-// as events are triggered, event objects are passed as an argument to callbacks
+// As events are triggered, event objects are passed as an argument to callbacks
 div.addEventListener('click', (e) => console.log(e));
 
 ```
@@ -170,7 +170,7 @@ There are many DOM [event types](https://developer.mozilla.org/en-US/docs/Web/Ev
 
 
 ## Forms
-Forms have a variety of inputs that users can interact with. The <code>submit</code> event can be used to retrieve the values of those inputs. 
+Forms have a variety of <code>inputs</code> that users can interact with. The <code>submit</code> event can be used to retrieve the values of those inputs. 
 
 When a form submits, it will, by default, try to send a request and refresh the page. To prevent that, we need to call <code>e.preventDefault()</code>. Afterward, the <code>event</code> object can be used to pull the form values through the target attribute.
 
@@ -183,7 +183,7 @@ When a form submits, it will, by default, try to send a request and refresh the 
 form.addEventListener('submit',(e)=> {
     e.preventDefault;
     
-    // here we are using the 'name' property from the form input to target the corresponding value
+    // Here we are using the 'name' property from the form input to target the corresponding value
     console.log(e.target.faveColor.value);
 })
 
