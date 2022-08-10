@@ -35,7 +35,6 @@
 <details>
     <br>
     <summary>Build a callback function, <code>handleForm</code>, that uses the form's <code>submit</code> event to build a newCard object using <code>renderBookCard</code>. </summary>
-<br>
     
     function handleForm(e){
         
