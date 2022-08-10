@@ -12,14 +12,12 @@
 
 <details>
     <summary>Add an eventListener to any element and log the event object.</summary>
-<br>
-<code>  
-    
+<code>
+
     const bodyElement = document.querySelector('body');
 
     // Why do we pass a callback function expression and not a function invocation?
     body.addEventListener('click', e => console.log(e));
-    
 </code>
 </details>
 <br>
