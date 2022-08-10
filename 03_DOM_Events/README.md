@@ -21,24 +21,21 @@
 </details>
 <br>
 <details>
+    <br>
     <summary>In <code>renderBookCard</code>, add an event listener to the Delete button.
     Add a callback that removes the appropriate bookCard. You can do this through the <code>li</code> itself or the <code>click</code> event.</summary>
-<br>
-<code>  
     
     // through 'click' event
     btn.addEventListener('click', e => e.target.parentElement.remove());
 
     // directly through li
     btn.addEventListener('click', () => li.remove());
-
-</code>
 </details>
 <br>
 <details>
+    <br>
     <summary>Build a callback function, <code>handleForm</code>, that uses the form's <code>submit</code> event to build a newCard object using <code>renderBookCard</code>. </summary>
 <br>
-<code>  
     
     function handleForm(e){
         
@@ -61,26 +58,20 @@
 
     // add eventListener to form#book-form handle form submit event
     document.querySelector('#book-form').addEventListener('submit', handleForm)
-
-</code>
 </details>
 <br>
 <details>
+    <br>
     <summary>Add a <code>DOMContentLoaded</code> eventListener to the document and move all of our UI logic to within the callback function. Why might we want to do this?</summary>
-<br>
-<code>  
 
     document.addEventListener('DOMContentLoaded', () => {
         // ...all DOM dependent rendering / event handling logic here
     });
-
-</code>
 </details>
 <br>
 <details>
+    <br>
     <summary>In <code>data.js</code>, create a <code>newBookStore</code> object with the same properties as <code>bookStore</code>. Using JS, add a button that toggles the store information to use for the <code>header</code>, <code>footer</code>, and appropriate <code>li</code> elements.</summary>
-<br>
-<code>  
 
     // data.js
         
@@ -143,7 +134,6 @@
             }
         }
 
-</code>
 </details>
 <br>
 
