@@ -12,7 +12,7 @@
 
 <details>
     <br>
-    <summary>Add an eventListener to any element and log the event object.</summary>
+    <summary>Add an event listener to any element and log the event object.</summary>
 
     const bodyElement = document.querySelector('body');
 
@@ -55,13 +55,13 @@
         renderBookCard(book);
     }
 
-    // add eventListener to form#book-form handle form submit event
+    // add event listener to form#book-form handle form submit event
     document.querySelector('#book-form').addEventListener('submit', handleForm)
 </details>
 <br>
 <details>
     <br>
-    <summary>Add a <code>DOMContentLoaded</code> eventListener to the document and move all of our UI logic to within the callback function. Why might we want to do this?</summary>
+    <summary>Add a <code>DOMContentLoaded</code> event listener to the document and move all of our UI logic to within the callback function. Why might we want to do this?</summary>
 
     document.addEventListener('DOMContentLoaded', () => {
         // ...all DOM dependent rendering / event handling logic here
