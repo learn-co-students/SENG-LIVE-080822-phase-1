@@ -70,7 +70,7 @@
 <br>
 <details>
     <br>
-    <summary>In <code>data.js</code>, create a <code>newBookStore</code> object with the same properties as <code>bookStore</code>. Using JS, add a button that toggles the store information to use for the <code>header</code>, <code>footer</code>, and appropriate <code>li</code> elements.</summary>
+    <summary>In <code>data.js</code>, create a <code>newBookStore</code> object with the same properties as <code>bookStore</code>. Add a button that toggles the store information to use for the <code>header</code>, <code>footer</code>, and appropriate <code>li</code> elements.</summary>
 
     // data.js
         
