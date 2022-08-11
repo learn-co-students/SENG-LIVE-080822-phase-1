@@ -1,6 +1,92 @@
+// BREAK UNTIL :02
+
 document.addEventListener('DOMContentLoaded', () => {
 
-// Render Functions
+    // const myArray = [];
+    // const myOtherArray = Array.new([]);
+
+    // // 👇️ Example promise
+    // const p = Promise.reject('CONTENTS');
+
+    // p.then(value => {
+    //     console.log(`SUCCESS! ${value}`); // 👉️ "hello"
+    // }).catch(err => {
+    //     console.log(`ERROR! ${err}`);
+    // });
+
+    // promise => box
+        // statuses => pending, fulfilled, rejected 
+        // contents => what's returned / passed on once the promise is resolved
+    
+    // console.log(fetch('http://localhost:3000/stores'))
+
+    // Handle GET Request
+    function handleRequest(url) {
+        // console.log(fetch(url))
+        return fetch(url)
+        .then(res => console.log(res.json()));
+    }
+
+    // Handle POST Request
+
+    // Handle PUT / PATCH Request
+
+    // Handle DELETE Request
+
+    function renderHeaderFooter(store) {
+        renderHeader(store);
+        renderFooter(store);
+    }
+
+    // Render Response Data => Store 
+    // Initial Store Render
+    handleRequest('http://localhost:3000/stores/1')
+    .then(renderHeaderFooter)
+    .catch(console.log);
+
+
+    // Render Response Data => Books
+    handleRequest('http://localhost:3000/books')
+    .then(books => books.forEach(renderBookCard))
+    .catch(console.log);
+
+    // // Render Response Data => Stores
+    handleRequest('http://localhost:3000/stores')
+    .then(stores => stores.forEach(renderStoreCard))
+    .catch(console.log);
+
+
+    // Render Functions
+
+    const storesContainer = document.querySelector('#stores');
+
+    // Renders Store Card
+    function renderStoreCard(store) {
+        // create necessary elements
+        const storeCard = document.createElement('li');
+        const storeName = document.createElement('h3');
+        const storeLocation = document.createElement('p');
+        const storeHours = document.createElement('p');
+
+        storeCard.className = 'list-li'
+
+        // populate elements with appropriate content
+        storeName.textContent = store.name;
+        storeLocation.textContent = store.location;
+        storeHours.textContent = store.hours;
+
+        // appending to the DOM as necessary
+        storeCard.append(storeName, storeLocation, storeHours);
+        storesContainer.append(storeCard);
+
+        // add event handling behaviors
+        storeCard.addEventListener('click', () => { 
+            handleRequest(`http://localhost:3000/stores/${store.id}`) 
+            .then(renderHeaderFooter)
+            .catch(console.log);
+        })
+    }
+
     // Renders Header
     function renderHeader(store){
         document.querySelector('h1').textContent = store.name
@@ -48,14 +134,17 @@ document.addEventListener('DOMContentLoaded', () => {
             inventory:e.target.inventory.value,
             reviews:[]
         }
+
+        // add each new book to bookStore inventory
+        bookStore.inventory.push(book);
+
         renderBookCard(book)
     }
 
-//Invoking functions
-    renderHeader(bookStore)
-    renderFooter(bookStore)
-    bookStore.inventory.forEach(renderBookCard)
+    //Invoking functions
+    // Changes are not persisted
+    // renderHeader(bookStore)
+    // renderFooter(bookStore)
+    // bookStore.inventory.forEach(renderBookCard)
     document.querySelector('#book-form').addEventListener('submit', handleForm)
-
-
 })
