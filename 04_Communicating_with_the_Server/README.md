@@ -6,7 +6,7 @@
 - [ ] Observe how to send a GET request using .fetch()
 - [ ] Explain what asynchronous means in JavaScript
 - [ ] Explain why promises are important in JavaScript
-- [ ]Observe how to handle promises and errors using .then() and .catch()
+- [ ] Observe how to handle promises and errors using .then() and .catch()
 - [ ] Observe how json-server is used to create a local API
 - [ ] Observe how to render data to the browser window after a fetch request
 
