@@ -1,4 +1,4 @@
-# Asynchronous JavaScript & Fetch
+# Communicating With the Server
 ## SWBAT
 - [ ] Describe the request-response cycle
 - [ ] Explain the differences between a server and a client
