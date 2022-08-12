@@ -1,10 +1,10 @@
 # Post Requests
 ## SWBAT
-- [ ] Observe how to send a  POST request using HTML forms and JavaScript
-- [ ] Explain the difference between optimistic and pessimistic rendering
+- [x] Observe how to send a POST request using HTML forms and JavaScript
+- [x] Explain the differences between optimistic and pessimistic rendering
 
 ## Deliverables 
-- Inside of handleForm make a POST request to ‘/books’
+- Inside of `handleForm`, make a POST request to `/books`
     - Explore the MDN documentation on POST 
     - Review the request object and what each property represents. 
     - Review JSON.stringify and why it's used on the body of our request
