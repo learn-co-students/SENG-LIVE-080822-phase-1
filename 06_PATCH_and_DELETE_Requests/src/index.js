@@ -1,11 +1,22 @@
+// CRUD
+
+// C = Create
+
+// R => Read
+
+// U => Update
+
+// D => Delete
+
 document.addEventListener('DOMContentLoaded', () => {
     // Fetch requests 
-        // Function for making a GET request 
+        // GET Request 
         function fetchResource(url){
             return fetch(url)
             .then(res => res.json());
         }
 
+        // POST Request
         function createResources(url, body){
             return fetch(url,{
                 method: 'POST', 
@@ -15,6 +26,34 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: JSON.stringify(body),
             })
             .then(res => res.json());
+        }
+
+        // PATCH vs. PUT
+        // PATCH => Makes Singular Change
+        // PUT => Replaces Entire Original Object 
+
+        function patchResource(url, body) {
+            
+            // No Error Handling
+            // Not Working With Returned Data
+            
+            return fetch(url,{
+                method: 'PATCH', 
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(body),
+            })
+            .then(res => res.json())
+            // .then(data => console.log(data))
+            // .catch(error => console.log(error));
+        }
+
+        function deleteResource(url) {
+            return fetch(url,{
+                method: 'DELETE'
+            })
+            .then(res => res.json())
         }
 
     // Rendering functions
@@ -50,8 +89,9 @@ document.addEventListener('DOMContentLoaded', () => {
             li.className = 'list-li';
     
             //Event Listeners 
-            btn.addEventListener('click',()=>li.remove());
-        
+            btn.addEventListener('click', () => handleDeleteRequest(cardData.id, li));
+            pInventory.addEventListener('change', e => handlePatchRequest(cardData.id, e.target.value));
+
             li.append(h3,pAuthor,pPrice,pInventory,img,btn);
             document.querySelector('#book-list').append(li);
         }
@@ -69,18 +109,44 @@ document.addEventListener('DOMContentLoaded', () => {
                 reviews:[]
             };
 
+            // Optimistic Rendering
+            // renderBookCard(book);
+
             createResources('http://localhost:3000/books', book)
             .then(renderBookCard)
-            .catch(e => console.error(e));
+            .catch(e => { 
+                // removeBookCard(book);
+                console.error(e);
+            });
+        }
+
+        function handlePatchRequest(id, body) {
+            patchResource(
+                `http://localhost:3000/books/${id}`, 
+                { inventory: body }
+            )
+            .then(data => console.log(data))
+            .catch(error => console.log(error));
+        }
+
+        function handleDeleteRequest(id, bookCard) {
+            deleteResource(`http://localhost:3000/books/${id}`)
+            .then(data => { 
+                console.log(data);
+                bookCard.remove();
+            })
+            .catch(error => console.log(error));
         }
     
     
     // Invoking functions    
         fetchResource('http://localhost:3000/stores/1')
+        // Handle Rendering
         .then(store => {
             renderHeader(store)
             renderFooter(store)
         })
+        // Handle Error Catching
         .catch(e => console.error(e));
     
         fetchResource('http://localhost:3000/books')
