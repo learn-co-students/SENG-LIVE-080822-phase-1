@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(res => res.json())
         }
 
-        function createResources(url, body){
+        function createResource(url, body){
             return fetch(url,{
                 method: 'POST', 
                 headers: {
@@ -65,28 +65,77 @@ document.addEventListener('DOMContentLoaded', () => {
                 inventory:e.target.inventory.value,
                 reviews:[]
             }
-            createResources('http://localhost:3000/books', book)
+            createResource('http://localhost:3000/books', book)
             .then(renderBookCard)
             .catch(e => console.error(e))
 
         }
 
-        function handleRenderSearch(){
+        function handleRenderHome() {
             document.querySelector('main').innerHTML = `
-            <form id="api-Search">
-                <label>API Search<label>
-                <input type="text" name="search"></input>
-                <input type="submit"></input>
-            </form>
+            <div id="form-wrapper">
+                <div id="api-search"></div>
+                <form id="book-form">
+                
+                    <label for="title">Title:</label>
+                    <input type="text" id="form-title" name="title">
+        
+                    <label for="author">Author:</label>
+                    <input type="text" id="form-author" name="author">
+                
+                    <label for="price">Price:</label>
+                    <input type="number" id="form-price" name="price">
+                
+                    <label for="imageUrl">Image url:</label>
+                    <input type="text" id="form-imageUrl" name="imageUrl">
+                
+                    <label for="inventory">Inventory:</label>
+                    <input type="text" id="inventory" name="inventory">
+                    
+                    <input type="submit" value="ADD BOOK"/>
+                </form>
+            </div>
+            <div class="list">
+                <ul id="book-list">
+                </ul>
+            </div>
+            `
+            
+            fetchResource('http://localhost:3000/stores/1')
+            .then(store => {
+                renderHeader(store)
+                renderFooter(store)
+            })
+            .catch(e => console.error(e))
+        
+            fetchResource('http://localhost:3000/books')
+            .then(books => books.forEach(renderBookCard))
+            .catch(e => console.error(e))
+        }
+
+        function handleRenderSearch(){
+            document.querySelector('main').innerHTML = `    
+                <form id="api-Search">
+                    <label>API Search<label>
+                    <input type="text" name="search"></input>
+                    <input type="submit"></input>
+                </form>
+
+                <br>
+                <hr />
             `
 
-            document.querySelector('#api-search').addEventListener('submit', handleAPIQuery)
+            document.querySelector('#api-search').addEventListener('submit', handleAPIQuery);
         }
+
+
         //Handles Google Books API search
         function handleAPIQuery(e){
-            e.preventDefault()
-            const search = e.target.search.value
-               
+            e.preventDefault();
+            const search = e.target.search.value;
+            
+            // 
+            console.log(search);
         }
 
     
@@ -103,6 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(books => books.forEach(renderBookCard))
         .catch(e => console.error(e))
     
-        document.querySelector('#book-form').addEventListener('submit', handleForm)
-        document.querySelector('#nav-search').addEventListener('click', handleRenderSearch)
+        document.querySelector('#book-form').addEventListener('submit', handleForm);
+        document.querySelector('#nav-search').addEventListener('click', handleRenderSearch);
+        document.querySelector('#nav-home').addEventListener('click', handleRenderHome);
 })
