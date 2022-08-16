@@ -1,4 +1,4 @@
-# Full CRUD Requests
+# Communicating With External APIs
 ## SWBAT
 - [ ] Explain what an API is
 - [ ] Explain the limitations of working with an external API
